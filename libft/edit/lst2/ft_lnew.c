@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 22:07:36 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/22 14:45:59 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/10 12:04:43 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,23 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_lst	*ft_lnew(char *f_name, char *d_name, int date)
+t_lst	*ft_lnew(char *name)
 {
 	t_lst	*new;
 
 	if (!(new = malloc(sizeof(t_lst))))
 		return (NULL);
-	if (f_name)
+	if (name)
 	{
-		if (!(new->f_name = ft_strdup(f_name)))
+		if (!(new->name = ft_strdup(name)))
 			return (NULL);
 	}
 	else
-		new->f_name = NULL;
-	if (d_name)
-	{
-		if (!(new->d_name = ft_strdup(d_name)))
-			return (NULL);
-	}
-	else
-		new->d_name = NULL;
-	new->date = (date ? date : 0);
+		new->name = NULL;
+	new->len = ft_strlen(name);
+	new->x = 0;
+	new->y = 0;
+	new->is_selected = FALSE;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

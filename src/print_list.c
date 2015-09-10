@@ -1,0 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
+/*   Updated: 2015/09/10 20:23:34 by mcanal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+** print selected list on stdout
+*/
+
+#include "ft_select.h"
+
+extern t_env	*g_env;
+
+void			print_selection(void)
+{
+	t_lst   *tmp;
+
+	tmp = g_env->first;
+	while (tmp)
+	{
+		if (tmp->is_selected)
+		{
+			ft_putstr(tmp->name);
+			ft_putchar(' ');
+		}
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
+}
+
+static size_t	longest_arg(t_lst **first)
+{
+	t_lst	*tmp;
+	size_t	longest;
+
+	tmp = *first;
+	longest = 0;
+	while (tmp)
+	{
+		if (tmp->len > longest)
+			longest = tmp->len;
+		tmp = tmp->next;
+	}
+	return (longest);
+}
+
+void			print_list(void)
+{
+	t_lst	*tmp;
+	size_t	cols;
+	size_t	col_len;
+	size_t	col_x;
+	size_t	space_len;
+	int		x;
+	int		y;
+
+	if (tputs(tgetstr("cl", NULL), 0, tputs_output) == ERR)
+		error(TPUTS, "cl");
+	tmp = g_env->first;
+	col_len = longest_arg(&g_env->first) + 2;
+	cols = g_env->ws->ws_col / col_len;
+	if (cols < 1 || (size_t)ft_llen(&g_env->first) / cols > g_env->ws->ws_row)
+	{
+		ft_putendl(":/");
+		return ;
+	}
+	y = 0;
+	while (tmp)
+	{
+		col_x = cols;
+		x = 0;
+		while (col_x && tmp)
+		{
+			tmp->x = x;
+			tmp->y = y;
+			if (tmp == g_env->current)
+				if (tputs(tgetstr("us", NULL), 0, tputs_output) == ERR)
+					error(TPUTS, "us");
+			if (tmp->is_selected)
+				if (tputs(tgetstr("mr", NULL), 0, tputs_output) == ERR)
+					error(TPUTS, "mr");
+			ft_putstr(tmp->name);
+			if (tputs(tgetstr("me", NULL), 0, tputs_output) == ERR) //anytime?
+				error(TPUTS, "me");
+			space_len = col_len - tmp->len + 1;
+			x += tmp->len;
+			col_x--;
+			tmp = tmp->next;
+			while (space_len && col_x && tmp)
+			{
+				ft_putchar(' ');
+				space_len--;
+				x++;
+			}
+		}
+		ft_putchar('\n');
+		y++;
+	}
+}

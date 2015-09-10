@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 03:55:50 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/11 01:12:36 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/21 01:53:07 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@
 
 int	get_line(int const fd, char **a)
 {
-	int		i;
+	ssize_t	i;
 	int		stop;
 	int		n;
-	char	buf[BUFF_SIZE];
+	char	buf[BUFF_SIZE + 1];
 
 	if (!a || fd < 0)
 		return (0);
 	*a = ft_strnew(1);
+	n = 0;
 	while ((i = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[i] = '\0';
-		*a = (char *)ft_realloc((void *)*a, ft_strlen(*a), ft_strlen(*a) + i);
+		*a = (char *)ft_realloc(\
+			(void *)*a, ft_strlen(*a), ft_strlen(*a) + (size_t)i);
 		ft_strcat(*a, buf);
 		if ((stop = ft_strindex(*a, '\n')) != -1)
 		{
@@ -39,7 +41,7 @@ int	get_line(int const fd, char **a)
 			break ;
 		}
 	}
-	*a = ft_realloc((void *)*a, ft_strlen(*a), stop);
+	*a = ft_realloc((void *)*a, ft_strlen(*a), stop > 0 ? (size_t)stop : 0);
 	if (!*a || i < 0 || !n)
 		return (0);
 	return (1);

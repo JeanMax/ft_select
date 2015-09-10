@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:39:11 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/09 21:26:50 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/24 18:13:36 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void *ft_memchr(const void *s, int c, size_t n)
 	{
 		if (*(unsigned char *)s == (unsigned char)c)
 			return ((void *)s);
-		s++;
+		s = (char *)s + 1;
 	}
 	return (0);
 }

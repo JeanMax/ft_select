@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freeitab.c                                      :+:      :+:    :+:   */
+/*   ft_debugdbl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/15 03:58:41 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/16 03:14:23 by mcanal           ###   ########.fr       */
+/*   Created: 2014/12/26 23:24:49 by mcanal            #+#    #+#             */
+/*   Updated: 2015/07/14 23:23:20 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Free an int tab
+** Allows to print a double variable preceded by its name (debug!)
 */
 
 #include "libft.h"
 
-void	ft_freeitab(int *tab)
+void	ft_debugdbl(char *name, double nbr)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		ft_memdel((void *)&tab[i++]);
-	ft_memdel((void *)&tab);
+	ft_putchar_clr('<', "r");
+	ft_putstr_clr(name, "r");
+	ft_putstr_clr(":", "r");
+	ft_putdbl_clr(nbr, "g");
+	ft_putendl_clr(">", "r");
 }

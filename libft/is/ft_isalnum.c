@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:23:09 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/08 17:12:30 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/09 01:41:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 int		ft_isalnum(int i)
 {
 	if (ft_isalpha(i) || ft_isdigit(i))
-		return (1);
+		return (8);
 	return (0);
 }

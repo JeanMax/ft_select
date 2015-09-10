@@ -6,17 +6,21 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/11 21:49:30 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/24 13:39:04 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
-# define BUFF_SIZE 8
+# define BUFF_SIZE	512
+# define TRUE		1
+# define FALSE		0
 
 # include <string.h>
 # include "edit.h"
+
+typedef unsigned char	t_char;
 
 /*
 ** io
@@ -25,18 +29,22 @@ void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
-void	*fail(char *s);
-void	*failn(char *s);
+void	*fail(char const *s);
+void	*failn(char const *s);
+void	ft_putdbl(double nbr);
+void	ft_putdbl_fd(double nbr, int fd);
 void	ft_putnbr(int nbr);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(char const *s);
 void	ft_putstr_fd(char const *s, int fd);
+void	ft_putdbl_clr(double nbr, char *clr);
 void	ft_putnbr_clr(int nbr, char *clr);
-void	ft_putstr_clr(char const *s, char *clr);
-void	ft_putendl_clr(char const *s, char *clr);
+void	ft_putstr_clr(char *s, char *clr);
+void	ft_putendl_clr(char *s, char *clr);
 void	ft_putchar_clr(char c, char *clr);
 void	ft_debugstr(char *name, char *str);
 void	ft_debugnbr(char *name, int nbr);
+void	ft_debugdbl(char *name, double nbr);
 int		get_all(int const fd, char **a);
 int		get_next_line(int const fd, char **line);
 int		get_line(int const fd, char **a);
@@ -55,6 +63,7 @@ int		ft_islower(int c);
 int		ft_isprint(int i);
 int		ft_ispunct(int c);
 int		ft_isspace(int c);
+int		ft_istoobig(char *s);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 
@@ -101,7 +110,6 @@ void	ft_lclean(t_lst **alst);
 void	ft_bzero(void *s, size_t n);
 char	**ft_cpystab(char **tab, char *val);
 void	ft_freestab(char **tab);
-void	ft_freeitab(int *tab);
 void	ft_memdel(void **ap);
 void	*ft_memalloc(size_t size);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
