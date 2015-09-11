@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 11:47:08 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 20:25:14 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 20:46:11 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,23 @@
 
 #include "ft_select.h"
 
-extern t_env	*g_env;
-
 static char		get_key(void)
 {
 	ssize_t	ret;
-	char	buf[KEY_BUF_SIZE + 1]; //TODO: give it an &char instead
-	
+	char	buf[KEY_BUF_SIZE + 1];
+
 	if ((ret = read(STDIN_FILENO, buf, KEY_BUF_SIZE)) < 0)
 		return (FALSE);
-	if (ret == 1 && *buf > 0) //this is a simple ascii character!
+	if (ret == 1 && *buf > 0)
 		return (*buf);
-	else if (*buf == 27 && *(buf + 1) == 91) //this is an arrow!
+	else if (*buf == 27 && *(buf + 1) == 91)
 	{
 		if (ret == 3)
-			return (*(buf + 2) - 64); // 64 so it match enum
-		else if (ret == 4 && *(buf + 2) == 51 && *(buf + 3) == 126)//this is del
+			return (*(buf + 2) - 64);
+		else if (ret == 4 && *(buf + 2) == 51 && *(buf + 3) == 126)
 			return (K_DEL);
 	}
 	return (FALSE);
-/*		
-	ft_debugnbr("read_return", ret); //debug
-	int i = 0;
-	buf[ret] = 0;
-	while (i < KEY_BUF_SIZE && buf[i])
-	{
-		ft_putnbr(buf[i]);
-		ft_putstr(" = ");
-		ft_putchar(buf[i]);
-		ft_putstr(" | ");
-		i++;
-	}
-	ft_putchar('\n');
-	return (FALSE);
-*/
 }
 
 static void		remove_entry(void)
@@ -72,14 +55,14 @@ static void		remove_entry(void)
 	}
 	ft_ldellink(to_del);
 	ft_lfree(&to_del);
-	print_list(); //just to recalculate coords...
+	print_list();
 	move_cursor(42);
 }
 
 void			key_loop(void)
 {
 	char	key;
-	
+
 	move_cursor(K_START);
 	while ((key = get_key()) != K_ESC)
 	{
@@ -91,7 +74,8 @@ void			key_loop(void)
 			remove_entry();
 		else if (key == K_SPACE)
 		{
-			g_env->current->is_selected = g_env->current->is_selected ? FALSE : TRUE;
+			g_env->current->is_selected = g_env->current->is_selected ? \
+				FALSE : TRUE;
 			move_cursor(K_RIGHT);
 		}
 		else if (key == K_RETURN)
@@ -100,7 +84,5 @@ void			key_loop(void)
 			print_selection();
 			exit(EXIT_SUCCESS);
 		}
-		else
-			ft_debugnbr("key", key); //debug
 	}
 }

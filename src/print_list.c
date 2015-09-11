@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 20:23:34 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 20:57:16 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 */
 
 #include "ft_select.h"
-
-extern t_env	*g_env;
 
 void			print_selection(void)
 {
@@ -83,11 +81,11 @@ void			print_list(void)
 			if (tmp == g_env->current)
 				if (tputs(tgetstr("us", NULL), 0, tputs_output) == ERR)
 					error(TPUTS, "us");
-			if (tmp->is_selected)
-				if (tputs(tgetstr("mr", NULL), 0, tputs_output) == ERR)
+			if (tmp->is_selected && \
+				tputs(tgetstr("mr", NULL), 0, tputs_output) == ERR)
 					error(TPUTS, "mr");
 			ft_putstr(tmp->name);
-			if (tputs(tgetstr("me", NULL), 0, tputs_output) == ERR) //anytime?
+			if (tputs(tgetstr("me", NULL), 0, tputs_output) == ERR)
 				error(TPUTS, "me");
 			space_len = col_len - tmp->len + 1;
 			x += tmp->len;

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 04:58:45 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 20:09:13 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 19:29:08 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "libft.h"
 
-t_lst *ft_lfind(t_lst **alst, int x, int y)
+t_lst			*ft_lfind(t_lst **alst, int x, int y)
 {
 	t_lst	*tmp;
 

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 20:06:51 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 20:39:12 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,68 +16,9 @@
 ** DEFINE
 */
 # define FT_SELECT_H
-
-# define TERM_LINE_WRAP_ON		ft_putstr("\033[7h")
-# define TERM_LINE_WRAP_OFF		ft_putstr("\033[7l")
-
-# define TERM_SCROLL_DOWN		ft_putstr("\033D")
-# define TERM_SCROLL_UP			ft_putstr("\033M")
-
-# define TERM_SET_TAB			ft_putstr("\033H")
-# define TERM_CLEAR_TAB			ft_putstr("\033[g")
-# define TERM_CLEAR_ALL_TABS	ft_putstr("\033[3g")
-
-# define TERM_CLEAR_LINE_END	ft_putstr("\033[K")
-# define TERM_CLEAR_LINE_START	ft_putstr("\033[1K")
-# define TERM_CLEAR_LINE		ft_putstr("\033[2K")
-# define TERM_CLEAR_SCREEN_DOWN	ft_putstr("\033[J")
-# define TERM_CLEAR_SCREEN_UP	ft_putstr("\033[1J")
-# define TERM_CLEAR_SCREEN		ft_putstr("\033[2J")
-//# define TERM_SCREEN_CLEAR		ft_putstr("\033[H\033[J")
-
+# define KEY_BUF_SIZE			5
 # define TERM_SCREEN_SAVE		ft_putstr("\033[?47h") 
 # define TERM_SCREEN_RESTORE	ft_putstr("\033[?47l") 
-
-# define TERM_CURSOR_HOME		ft_putstr("\033[H")
-# define TERM_CURSOR_GOTO(x, y)	ft_putstr("\033["), ft_putnbr(y), \
-								ft_putchar(';'), ft_putnbr(x), ft_putchar'H')
-# define TERM_CURSOR_SAVE		ft_putstr("\0337") //s? without attr
-# define TERM_CURSOR_RESTORE	ft_putstr("\0338") //u? idem
-# define TERM_CURSOR_UP			ft_putstr("\0331A") //add count before letter
-# define TERM_CURSOR_DOWN		ft_putstr("\0331B") //idem
-# define TERM_CURSOR_FW			ft_putstr("\0331C") //idem
-# define TERM_CURSOR_BW			ft_putstr("\0331D") //idem
-
-# define TERM_TEXT_RESTORE		ft_putstr("\033[0m") 
-
-# define TERM_FONT_BOLD			ft_putstr("\033[1m")
-# define TERM_FONT_DIM			ft_putstr("\033[2m")
-# define TERM_FONT_UNDERSCORE	ft_putstr("\033[4m")
-# define TERM_FONT_BLINK		ft_putstr("\033[5m")
-# define TERM_FONT_REVERSE		ft_putstr("\033[7m") //or 5?
-# define TERM_FONT_HIDDEN		ft_putstr("\033[8m")
-
-# define TERM_FG_COLOR_BLACK	ft_putstr("\033[30m")
-# define TERM_FG_COLOR_RED		ft_putstr("\033[31m")
-# define TERM_FG_COLOR_GREEN	ft_putstr("\033[32m")
-# define TERM_FG_COLOR_YELLOW	ft_putstr("\033[33m")
-# define TERM_FG_COLOR_BLUE		ft_putstr("\033[34m")
-# define TERM_FG_COLOR_MAGENTA	ft_putstr("\033[35m")
-# define TERM_FG_COLOR_CYAN		ft_putstr("\033[36m")
-# define TERM_FG_COLOR_WHITE	ft_putstr("\033[37m")
-# define TERM_FG_COLOR_DEFAULT	ft_putstr("\033[39m")
-
-# define TERM_BG_COLOR_BLACK	ft_putstr("\033[40m")
-# define TERM_BG_COLOR_RED		ft_putstr("\033[41m")
-# define TERM_BG_COLOR_GREEN	ft_putstr("\033[42m")
-# define TERM_BG_COLOR_YELLOW	ft_putstr("\033[43m")
-# define TERM_BG_COLOR_BLUE		ft_putstr("\033[44m")
-# define TERM_BG_COLOR_MAGENTA	ft_putstr("\033[45m")
-# define TERM_BG_COLOR_CYAN		ft_putstr("\033[46m")
-# define TERM_BG_COLOR_WHITE	ft_putstr("\033[47m")
-# define TERM_BG_COLOR_DEFAULT	ft_putstr("\033[49m")
-
-# define KEY_BUF_SIZE 5
 
 /*
 ** INCLUDE
@@ -93,7 +34,7 @@
 # include <sys/ioctl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-	
+
 
 /*
 ** ENUM
@@ -140,6 +81,12 @@ struct		s_env
 	struct winsize	*ws;
 };
 
+
+/*
+** GLOBAL
+*/
+extern t_env			*g_env;
+
 /*
 ** PROTOTYPES
 **
@@ -154,8 +101,7 @@ void		error(char error, char *msg);
 
 /*
 **  -signal.c
-*/	
-//void		sig_handl(int i); //TODO: static me?
+*/
 void		sig_init(void);
 
 /*
@@ -177,4 +123,4 @@ void		print_selection(void);
 */
 void		move_cursor(char key);
 
-#endif //FT_SELECT_H
+#endif

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 10:01:19 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 20:24:51 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 20:51:35 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 
 #include "ft_select.h"
 
-extern t_env	*g_env;
-
-static int	get_bottom(t_lst *link)
+static int		get_bottom(t_lst *link)
 {
 	int	x;
 	int	y;
@@ -46,7 +44,7 @@ static void		get_coord(char key, int *x_y)
 		else
 		{
 			x_y[0] = 0;
-			x_y[1] = 0;	
+			x_y[1] = 0;
 			g_env->current = g_env->first;
 		}
 	}
@@ -61,7 +59,7 @@ static void		get_coord(char key, int *x_y)
 		else
 		{
 			x_y[0] = g_env->last->x;
-			x_y[1] = g_env->last->y;			
+			x_y[1] = g_env->last->y;
 			g_env->current = g_env->last;
 		}
 	}
@@ -71,7 +69,7 @@ static void		get_coord(char key, int *x_y)
 		if (g_env->current->y)
 			x_y[1] = g_env->current->y - 1;
 		else
-			x_y[1] = get_bottom(g_env->current);			
+			x_y[1] = get_bottom(g_env->current);
 		g_env->current = ft_lfind(&g_env->first, x_y[0], x_y[1]);
 	}
 	else if (key == K_DOWN)
@@ -88,7 +86,7 @@ static void		get_coord(char key, int *x_y)
 		x_y[0] = g_env->last->x;
 		x_y[1] = g_env->last->y;
 		g_env->current = g_env->last;
-	}	
+	}
 	else if (key == K_START)
 	{
 		x_y[0] = 0;
@@ -104,8 +102,8 @@ static void		get_coord(char key, int *x_y)
 
 void			move_cursor(char key)
 {
-	int	x_y[2]; //seriously?
-	
+	int	x_y[2];
+
 	get_coord(key, x_y);
 	print_list();
 	if (tputs(tgoto(tgetstr("cm", NULL), x_y[0], x_y[1]), \

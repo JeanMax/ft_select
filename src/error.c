@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 19:39:48 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/10 19:55:51 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 20:42:11 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,19 @@
 
 #include "ft_select.h"
 
-void		error(char e, char *msg)
+static void		error_annex(char e, char *msg)
 {
 	if (e == MALLOC)
-		fail("Malloc failed with var: "), failn(msg);
+		fail("Malloc failed with var: ");
+	else if (e == TPUTS)
+		fail("Tputs failed with str: ");
+	failn(msg);
+}
+
+void			error(char e, char *msg)
+{
+	if (e == MALLOC || e == TPUTS)
+		error_annex(e, msg);
 	else if (e == BUS)
 		failn("Bus error.");
 	else if (e == SEG)
@@ -36,8 +45,6 @@ void		error(char e, char *msg)
 		failn("This is not a tty.");
 	else if (e == LIST)
 		failn("Fillling list failed.");
-	else if (e == TPUTS)
-		fail("Tputs failed with str: "), failn(msg);
 	restore_term();
 	exit(EXIT_FAILURE);
 }

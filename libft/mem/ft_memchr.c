@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:39:11 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/24 18:13:36 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 18:56:23 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+void			*ft_memchr(const void *s, int c, size_t n)
 {
 	if (!s || !n)
 		return (0);

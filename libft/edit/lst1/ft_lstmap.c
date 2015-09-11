@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 02:31:48 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/11 16:25:26 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/11 19:11:18 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*alist;
 	t_list	*new_list;
