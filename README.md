@@ -5,14 +5,7 @@ select some stuffs...
 
 ### TODO: ###
 
+* selected files aren't printed on the right place
+* term isn't restored correctly
 * leaks tests
 * mac os tests
-* norme :
-```
-Norme: src/move.c
-Error (line 36): function get_coord has 65 lines
---
-Norme: src/print_list.c
-Error (line 54): function print_list has 50 lines
-Error (line 54, col 0): print_list has 7 variables
-```

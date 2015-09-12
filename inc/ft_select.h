@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 20:39:12 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/12 18:51:12 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,13 @@ void		print_selection(void);
 **  -move.c
 */
 void		move_cursor(char key);
+
+/*
+**  -move2.c
+*/
+void			move_right(int *x_y);
+void			move_left(int *x_y);
+void			move_up(int *x_y);
+void			move_down(int *x_y);
 
 #endif

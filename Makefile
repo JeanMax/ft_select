@@ -6,12 +6,12 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/09/10 10:02:03 by mcanal           ###   ########.fr        #
+#    Updated: 2015/09/12 18:53:25 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = ft_select
-SRC = main.c error.c signal.c get_key.c term.c print_list.c move.c
+SRC = main.c error.c signal.c get_key.c term.c print_list.c move.c move2.c
 O_DIR = obj
 C_DIR = src
 VPATH =	src
