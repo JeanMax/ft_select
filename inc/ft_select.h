@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/12 18:51:12 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/12 19:15:50 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 */
 # define FT_SELECT_H
 # define KEY_BUF_SIZE			5
-# define TERM_SCREEN_SAVE		ft_putstr("\033[?47h") 
-# define TERM_SCREEN_RESTORE	ft_putstr("\033[?47l") 
+# define TERM_SCREEN_SAVE		ft_putstr("\033[?47h")
+# define TERM_SCREEN_RESTORE	ft_putstr("\033[?47l")
 
 /*
 ** INCLUDE
@@ -34,7 +34,6 @@
 # include <sys/ioctl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-
 
 /*
 ** ENUM
@@ -81,7 +80,6 @@ struct		s_env
 	struct winsize	*ws;
 };
 
-
 /*
 ** GLOBAL
 */
@@ -89,7 +87,6 @@ extern t_env			*g_env;
 
 /*
 ** PROTOTYPES
-**
 **  -get_key.c
 */
 void		key_loop(void);

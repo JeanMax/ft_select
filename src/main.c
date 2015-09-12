@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 12:00:08 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 23:16:08 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/12 15:42:17 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				main(int ac, char **av)
 	t_env			e;
 	struct termios	term;
 	struct winsize	ws;
-	
+
 	if (ac == 1)
 		return (EXIT_SUCCESS);
 	g_env = &e;
