@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 20:57:16 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/12 15:44:59 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void			print_selection(void)
 {
-	t_lst   *tmp;
+	t_lst	*tmp;
 
 	tmp = g_env->first;
 	while (tmp)
@@ -83,7 +83,7 @@ void			print_list(void)
 					error(TPUTS, "us");
 			if (tmp->is_selected && \
 				tputs(tgetstr("mr", NULL), 0, tputs_output) == ERR)
-					error(TPUTS, "mr");
+				error(TPUTS, "mr");
 			ft_putstr(tmp->name);
 			if (tputs(tgetstr("me", NULL), 0, tputs_output) == ERR)
 				error(TPUTS, "me");

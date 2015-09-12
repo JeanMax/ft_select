@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 10:01:19 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 20:51:35 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/12 15:43:44 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ void			move_cursor(char key)
 	get_coord(key, x_y);
 	print_list();
 	if (tputs(tgoto(tgetstr("cm", NULL), x_y[0], x_y[1]), \
-			  0, tputs_output) == ERR)
+				0, tputs_output) == ERR)
 		error(TPUTS, "cm");
 }
