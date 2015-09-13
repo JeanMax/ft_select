@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/12 19:15:50 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 13:59:57 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ void		move_cursor(char key);
 /*
 **  -move2.c
 */
-void			move_right(int *x_y);
-void			move_left(int *x_y);
-void			move_up(int *x_y);
-void			move_down(int *x_y);
+void		move_right(int *x_y);
+void		move_left(int *x_y);
+void		move_up(int *x_y);
+void		move_down(int *x_y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/12 19:17:03 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 16:31:48 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void			print_selection(void)
 	{
 		if (tmp->is_selected)
 		{
-			ft_putstr(tmp->name);
-			ft_putchar(' ');
+			ft_putstr_fd(tmp->name, STDIN_FILENO);
+			ft_putchar_fd(' ', STDIN_FILENO);
 		}
 		tmp = tmp->next;
 	}
-	ft_putchar('\n');
+	ft_putchar_fd('\n', STDIN_FILENO);
 }
 
 static size_t	longest_arg(t_lst **first)
@@ -69,7 +69,7 @@ static void		print_loop(size_t cols, size_t col_len, t_lst *tmp, int y)
 	int		x;
 	size_t	col_x;
 	size_t	space_len;
-	
+
 	while (tmp)
 	{
 		col_x = cols;
