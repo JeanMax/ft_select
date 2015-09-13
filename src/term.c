@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:38:09 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 21:01:05 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/14 00:10:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int				tputs_output(int i)
 {
-	return ((int)write(1, &i, 1));
+	return ((int)write(STDIN_FILENO, &i, 1));
 }
 
 void			get_term_size(void)
@@ -45,6 +45,8 @@ void			init_term(void)
 	TERM_SCREEN_SAVE;
 	if (tputs(tgetstr("cl", NULL), 0, tputs_output) == ERR)
 		error(TPUTS, "cl");
+	if (tputs(tgetstr("vi", NULL), 0, tputs_output) == ERR)
+		error(TPUTS, "vi");
 }
 
 void			restore_term(void)
@@ -53,5 +55,7 @@ void			restore_term(void)
 	g_env->term->c_lflag |= ECHO;
 	if (tcsetattr(STDIN_FILENO, 0, g_env->term))
 		error(SETATTR, NULL);
+	if (tputs(tgetstr("ve", NULL), 0, tputs_output) == ERR)
+		error(TPUTS, "ve");
 	TERM_SCREEN_RESTORE;
 }

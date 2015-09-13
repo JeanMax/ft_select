@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 12:00:08 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/12 15:42:17 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 23:53:46 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int				main(int ac, char **av)
 	fill_list(++av);
 	key_loop();
 	restore_term();
+	ft_lclean(&g_env->first);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 11:47:08 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 20:46:11 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 23:53:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void		remove_entry(void)
 	else
 	{
 		restore_term();
+		ft_lclean(&g_env->first);
 		exit(EXIT_SUCCESS);
 	}
 	ft_ldellink(to_del);
@@ -82,6 +83,7 @@ void			key_loop(void)
 		{
 			restore_term();
 			print_selection();
+			ft_lclean(&g_env->first);
 			exit(EXIT_SUCCESS);
 		}
 	}

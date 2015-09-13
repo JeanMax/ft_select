@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 04:34:21 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 21:00:12 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 23:52:55 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void		sig_handl(int i)
 	else if (i == SIGINT || i == SIGQUIT)
 	{
 		restore_term();
+		ft_lclean(&g_env->first);
 		exit(EXIT_SUCCESS);
 	}
 	else if (i == SIGWINCH)

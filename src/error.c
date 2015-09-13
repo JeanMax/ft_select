@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 19:39:48 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 20:42:11 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 23:52:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void			error(char e, char *msg)
 	else if (e == LIST)
 		failn("Fillling list failed.");
 	restore_term();
+	ft_lclean(&g_env->first);
 	exit(EXIT_FAILURE);
 }

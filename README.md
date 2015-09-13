@@ -5,7 +5,6 @@ select some stuffs...
 
 ### TODO: ###
 
-* selected files aren't printed on the right place
-* term isn't restored correctly
-* leaks tests
+* term isn't restored correctly on macos -> new escapes sequences solved it?
+* leaks tests -> no real leaks, but some allocated memory still reachable in tgetent...
 * mac os tests

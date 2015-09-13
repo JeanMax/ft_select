@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/29 13:23:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/13 13:59:57 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/13 23:33:17 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 */
 # define FT_SELECT_H
 # define KEY_BUF_SIZE			5
-# define TERM_SCREEN_SAVE		ft_putstr("\033[?47h")
-# define TERM_SCREEN_RESTORE	ft_putstr("\033[?47l")
+//# define TERM_SCREEN_SAVE		ft_putstr_fd("\033[?47h", STDIN_FILENO)
+//# define TERM_SCREEN_RESTORE	ft_putstr_fd("\033[?47l", STDIN_FILENO)
+# define TERM_SCREEN_SAVE		ft_putstr_fd("\033[?1049h\033[H", STDIN_FILENO)
+# define TERM_SCREEN_RESTORE	ft_putstr_fd("\033[?1049l", STDIN_FILENO)
+
 
 /*
 ** INCLUDE

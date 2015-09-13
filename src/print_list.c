@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/13 16:31:48 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/14 00:21:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void			print_selection(void)
 	{
 		if (tmp->is_selected)
 		{
-			ft_putstr_fd(tmp->name, STDIN_FILENO);
-			ft_putchar_fd(' ', STDIN_FILENO);
+			ft_putstr(tmp->name);
+			ft_putchar(' ');
 		}
 		tmp = tmp->next;
 	}
-	ft_putchar_fd('\n', STDIN_FILENO);
+	ft_putchar('\n');
 }
 
 static size_t	longest_arg(t_lst **first)
@@ -57,7 +57,7 @@ static void		print_name(t_lst *tmp, int x, int y)
 	if (tmp->is_selected && \
 		tputs(tgetstr("mr", NULL), 0, tputs_output) == ERR)
 		error(TPUTS, "mr");
-	ft_putstr(tmp->name);
+	ft_putstr_fd(tmp->name, STDIN_FILENO);
 	if (tputs(tgetstr("me", NULL), 0, tputs_output) == ERR)
 		error(TPUTS, "me");
 	tmp->x = x;
@@ -83,12 +83,12 @@ static void		print_loop(size_t cols, size_t col_len, t_lst *tmp, int y)
 			tmp = tmp->next;
 			while (space_len && col_x && tmp)
 			{
-				ft_putchar(' ');
+				ft_putchar_fd(' ', STDIN_FILENO);
 				space_len--;
 				x++;
 			}
 		}
-		ft_putchar('\n');
+		ft_putchar_fd('\n', STDIN_FILENO);
 		y++;
 	}
 }
@@ -103,7 +103,7 @@ void			print_list(void)
 	col_len = longest_arg(&g_env->first) + 2;
 	cols = g_env->ws->ws_col / col_len;
 	if (cols < 1 || (size_t)ft_llen(&g_env->first) / cols > g_env->ws->ws_row)
-		ft_putendl(":/");
+		ft_putendl_fd(":/", STDIN_FILENO);
 	else
 		print_loop(cols, col_len, g_env->first, 0);
 }
