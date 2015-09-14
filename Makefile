@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/09/12 18:53:25 by mcanal           ###   ########.fr        #
+#    Updated: 2015/09/15 00:01:21 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,15 +41,15 @@ BASIC = \033[0m
 
 .PHONY: all debug debug_lib sanitize sanitize_lib me_cry lib clean fclean zclean re brute
 
-all: lib $(NAME) $(S_NAME)
+all: lib $(NAME)
 
 debug: CFLAGS = -g -ggdb -O2
-debug: debug_lib $(NAME) $(S_NAME)
+debug: debug_lib $(NAME)
 debug_lib:
 	@$(MAKE) -C libft debug
 
 sanitize: CFLAGS = -g -ggdb -O2 -fsanitize=address,undefined -ferror-limit=5
-sanitize: sanitize_lib $(NAME) $(S_NAME)
+sanitize: sanitize_lib $(NAME)
 sanitize_lib:
 	@$(MAKE) -C libft sanitize
 
@@ -58,7 +58,7 @@ me_cry: CFLAGS += -Wpedantic -Wshadow -Wcast-qual -Wconversion -Wcast-align \
 				  -Winit-self -Wmissing-declarations -Wnonnull -Wuninitialized \
 				  -Wfloat-equal -Wbad-function-cast -Wundef -Waggregate-return \
 				  -Wstrict-overflow=5
-me_cry: lib $(NAME) $(S_NAME)
+me_cry: lib $(NAME)
 
 lib:
 	@$(MAKE) -C libft
@@ -85,7 +85,6 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) $(S_NAME)
 
 zclean: fclean
 	@make -C libft fclean
