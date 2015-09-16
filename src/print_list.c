@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 09:42:51 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/14 00:21:28 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/09/16 18:51:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static size_t	longest_arg(t_lst **first)
 
 static void		print_name(t_lst *tmp, int x, int y)
 {
+	COLOR_TEXT ? color(tmp) : (void)0;
 	if (tmp == g_env->current)
 		if (tputs(tgetstr("us", NULL), 0, tputs_output) == ERR)
 			error(TPUTS, "us");
@@ -100,10 +101,11 @@ void			print_list(void)
 
 	if (tputs(tgetstr("cl", NULL), 0, tputs_output) == ERR)
 		error(TPUTS, "cl");
-	col_len = longest_arg(&g_env->first) + 2;
+	col_len = longest_arg(&g_env->first) + 3;
 	cols = g_env->ws->ws_col / col_len;
-	if (cols < 1 || (size_t)ft_llen(&g_env->first) / cols > g_env->ws->ws_row)
-		ft_putendl_fd(":/", STDIN_FILENO);
+	if (cols < 1 || \
+		(size_t)ft_llen(&g_env->first) / cols > g_env->ws->ws_row - 1)
+		ft_putendl_fd("Resize me :/", STDIN_FILENO);
 	else
 		print_loop(cols, col_len, g_env->first, 0);
 }

@@ -6,12 +6,12 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2015/09/15 00:01:21 by mcanal           ###   ########.fr        #
+#    Updated: 2015/09/16 16:53:07 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = ft_select
-SRC = main.c error.c signal.c get_key.c term.c print_list.c move.c move2.c
+SRC = main.c error.c signal.c get_key.c term.c print_list.c move.c move2.c color.c
 O_DIR = obj
 C_DIR = src
 VPATH =	src
@@ -41,7 +41,8 @@ BASIC = \033[0m
 
 .PHONY: all debug debug_lib sanitize sanitize_lib me_cry lib clean fclean zclean re brute
 
-all: lib $(NAME)
+all: lib
+	@$(MAKE) $(NAME)
 
 debug: CFLAGS = -g -ggdb -O2
 debug: debug_lib $(NAME)
